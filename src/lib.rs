@@ -1,6 +1,6 @@
 use float_extras::f64::fmod;
 
-//algorithm and constant are taken from https://minkukel.com/en/various/calculating-moon-phase/
+//algorithm and constants are taken from https://minkukel.com/en/various/calculating-moon-phase/
 const LUNAR_DAYS: f64 = 29.53058770576;
 const MILLENIUM_NEW_MOON: i64 = 947182440;
 const LUNAR_SECS: f64 = LUNAR_DAYS * (24.0 * 60.0 * 60.0);
