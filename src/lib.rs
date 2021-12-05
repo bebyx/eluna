@@ -1,5 +1,6 @@
 use float_extras::f64::fmod;
 
+//algorithm and constant are taken from https://minkukel.com/en/various/calculating-moon-phase/
 const LUNAR_DAYS: f64 = 29.53058770576;
 const MILLENIUM_NEW_MOON: i64 = 947182440;
 const LUNAR_SECS: f64 = LUNAR_DAYS * (24.0 * 60.0 * 60.0);
@@ -68,15 +69,28 @@ pub fn verbal_phase(input_timestamp: i64) -> String {
     verbal_phase.to_string()
 }
 
-pub fn test_lib(input: String) -> String {
-    format!("Hello, {}!", input)
-}
-
 #[cfg(test)]
 mod tests {
+    use super::*;
+
     #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
+    fn millenium_phase_num() {
+        assert_eq!(numeric_phase(MILLENIUM_NEW_MOON), 0);
+    }
+
+    #[test]
+    fn millenium_phase_verb() {
+        assert_eq!(verbal_phase(MILLENIUM_NEW_MOON), String::from("new"));
+    }
+
+    //phase moon data for the tests below is taken from https://www.calendar-12.com/moon_phases/
+    #[test]
+    fn twenty_twenty_first_full_moon() {
+        assert_eq!(verbal_phase(1578684180), String::from("full"))
+    }
+
+    #[test]
+    fn epoch_first_full_moon() {
+        assert_eq!(verbal_phase(1860900), String::from("full"))
     }
 }
