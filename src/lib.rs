@@ -105,9 +105,15 @@ mod tests {
         assert_eq!(verbal_phase(1860900), String::from("full"))
     }
 
+    // Thu Jan 1 12:00:00 AM UTC 1970
+    #[test]
+    fn just_unix_timestamp() {
+        assert_eq!(verbal_phase(0), String::from("last quarter"))
+    }
+
     // Wed Jan 11 08:36:00 PM UTC 1933
     #[test]
-    fn holodomor_moon() {
+    fn holodomor_full_moon() {
         assert_eq!(verbal_phase(-1166671440), String::from("full"))
     }
 }
