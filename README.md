@@ -1,6 +1,7 @@
 # eluna
 
 [![eluna build status](https://github.com/bebyx/eluna/actions/workflows/rust.yml/badge.svg?branch=master)](https://github.com/bebyx/eluna/actions/workflows/rust.yml)
+[![eluna crate](https://img.shields.io/crates/v/eluna)](https://crates.io/crates/eluna)
 
 A Rust translation of [Minkukel's algorithm](https://minkukel.com/en/various/calculating-moon-phase/), which is claimed to provide **lunar data for a period of 1900-2100**.
 
