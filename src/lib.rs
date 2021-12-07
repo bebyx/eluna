@@ -1,11 +1,19 @@
+//! Not-so-precise moon calendar for 1900-2100.
+//!
+//! A Rust translation of [Minkukel][article]'s algorithm, which is claimed to provide **lunar data for a period of 1900-2100**.
+//!
+//! Input is a timestamp (`i64`), whether positive or negative. It's compatible with [chrono][chrono] `timestamp()` function.
+//!
+//! [article]: https://minkukel.com/en/various/calculating-moon-phase/
+//! [chrono]: https://docs.rs/chrono/
+
 use float_extras::f64::fmod;
 
-//algorithm and constants are taken from https://minkukel.com/en/various/calculating-moon-phase/
 const LUNAR_DAYS: f64 = 29.53058770576;
 const MILLENIUM_NEW_MOON: i64 = 947182440;
 const LUNAR_SECS: f64 = LUNAR_DAYS * (24.0 * 60.0 * 60.0);
 
-//return a moon second of the given time (like a day, but second)
+/// Return a moon second of the given time (like a day, but second).
 pub fn raw(input_timestamp: i64) -> u64 {
     let total_secs = input_timestamp - MILLENIUM_NEW_MOON;
     let mut moon_second = fmod(total_secs as f64, LUNAR_SECS);
@@ -15,17 +23,17 @@ pub fn raw(input_timestamp: i64) -> u64 {
     moon_second as u64
 }
 
-//return fraction of the moon -- convert to percent if needed
+/// Return fraction of the moon -- convert to percent if needed.
 pub fn fraction(input_timestamp: i64) -> f64 {
     raw(input_timestamp) as f64 / LUNAR_SECS
 }
 
-//return a moon day
+/// Return a moon day.
 pub fn moon_day(input_timestamp: i64) -> f64 {
     fraction(input_timestamp) * LUNAR_DAYS
 }
 
-//return a moon phase as number (0-8)
+/// Return a moon phase as number (0-8).
 pub fn numeric_phase(input_timestamp: i64) -> u8 {
     let moon_day = moon_day(input_timestamp);
     let phases: [[f64; 2]; 9] = [
@@ -50,7 +58,7 @@ pub fn numeric_phase(input_timestamp: i64) -> u8 {
     numeric_phase
 }
 
-//return a moon phase as a human-readable word or phrase
+/// Return a moon phase as a human-readable word or phrase.
 pub fn verbal_phase(input_timestamp: i64) -> String {
     let numeric_phase = numeric_phase(input_timestamp);
     let verbal_phase = match numeric_phase {
@@ -83,7 +91,6 @@ mod tests {
         assert_eq!(verbal_phase(MILLENIUM_NEW_MOON), String::from("new"));
     }
 
-    //phase moon data for the tests below is taken from https://www.calendar-12.com/moon_phases/
     // Phase moon data for the tests below is taken from https://www.calendar-12.com/moon_phases/
 
     // Fri Jan 10 07:23:00 PM UTC 2020
