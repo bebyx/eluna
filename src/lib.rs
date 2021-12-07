@@ -2,10 +2,10 @@
 //!
 //! A Rust translation of [Minkukel][article]'s algorithm, which is claimed to provide **lunar data for a period of 1900-2100**.
 //!
-//! Input is a timestamp (`i64`), whether positive or negative. It's compatible with [chrono][chrono] `timestamp()` function.
+//! Input is a timestamp ([`i64`]), whether positive or negative. It's compatible with [`chrono::DateTime::timestamp()`][chrono] function.
 //!
 //! [article]: https://minkukel.com/en/various/calculating-moon-phase/
-//! [chrono]: https://docs.rs/chrono/
+//! [chrono]: https://docs.rs/chrono/latest/chrono/struct.DateTime.html#method.timestamp
 
 use float_extras::f64::fmod;
 
