@@ -84,13 +84,23 @@ mod tests {
     }
 
     //phase moon data for the tests below is taken from https://www.calendar-12.com/moon_phases/
+    // Phase moon data for the tests below is taken from https://www.calendar-12.com/moon_phases/
+
+    // Fri Jan 10 07:23:00 PM UTC 2020
     #[test]
     fn twenty_twenty_first_full_moon() {
         assert_eq!(verbal_phase(1578684180), String::from("full"))
     }
 
+    // Thu Jan 22 12:55:00 PM UTC 1970
     #[test]
     fn epoch_first_full_moon() {
         assert_eq!(verbal_phase(1860900), String::from("full"))
+    }
+
+    // Wed Jan 11 08:36:00 PM UTC 1933
+    #[test]
+    fn holodomor_moon() {
+        assert_eq!(verbal_phase(-1166671440), String::from("full"))
     }
 }
