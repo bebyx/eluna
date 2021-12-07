@@ -16,5 +16,5 @@ Results are rather precise, when close to 2000, but may be quite approximate for
 Add this line to `Cargo.toml` to include **eluna** as a dependency:
 
 ```toml
-eluna = { git = "https://github.com/bebyx/eluna" }
+eluna = "0.1.0"
 ```
