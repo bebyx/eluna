@@ -111,9 +111,9 @@ mod tests {
         assert_eq!(verbal_phase(0), String::from("last quarter"))
     }
 
-    // Wed Jan 11 08:36:00 PM UTC 1933
+    // Tue Jan 14 10:21:00 PM UTC 1930
     #[test]
-    fn holodomor_full_moon() {
-        assert_eq!(verbal_phase(-1166671440), String::from("full"))
+    fn ninety_thirty_first_full_moon() {
+        assert_eq!(verbal_phase(-1261100340), String::from("full"))
     }
 }
