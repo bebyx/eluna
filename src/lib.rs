@@ -95,7 +95,7 @@ mod tests {
 
     // Fri Jan 10 07:23:00 PM UTC 2020
     #[test]
-    fn twenty_twenty_first_full_moon() {
+    fn twenty_twenty_ad_first_full_moon() {
         assert_eq!(verbal_phase(1578684180), String::from("full"))
     }
 
@@ -113,7 +113,7 @@ mod tests {
 
     // Tue Jan 14 10:21:00 PM UTC 1930
     #[test]
-    fn ninety_thirty_first_full_moon() {
+    fn ninety_thirty_ad_first_full_moon() {
         assert_eq!(verbal_phase(-1261100340), String::from("full"))
     }
 }
